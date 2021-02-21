@@ -11,6 +11,25 @@
     <h1>AngularJS Tables</h1>
     <p>The ng-repeat directive is perfect for displaying tables.</p>
 
+    <h3> 1 - Displaying tables with angular is very simple: </h3>
+    <div ng-app="myApp" ng-controller="customersCtrl"> 
+    <table>
+        <tr ng-repeat="x in names">
+            <td>{{ x.Name }}</td>
+            <td>{{ x.Country }}</td>
+        </tr>
+    </table>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http) {
+        $http.get("customers.php")
+        .then(function (response) {$scope.names = response.data.records;});
+    });
+    </script>
+    
+
 
     
 </body>
